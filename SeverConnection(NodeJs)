@@ -1,0 +1,33 @@
+1. make a folder.
+2. Create a .js file(entry point)
+3. go to terminal-> npm init
+4. npm i express
+5.make a connection 
+
+      const express=require("express");
+      const app=express();
+      app.listen(3000,()=>{
+          console.log("Connection has been established !");
+      })
+
+6.Importing content (file read)
+
+      const express=require("express");
+      const fs=require("fs");
+      const app=express();
+
+      app.get("/",(req,res)=>{
+          fs.readFile("index.html",(err,data)=>{
+              if(!err){
+                  res.setHeader("Content-type","text/html");
+                  res.write(data);
+                  res.end();
+              }
+              else{
+                  console.log("Error !"); 
+              }
+          })
+      })
+      app.listen(3000,()=>{
+          console.log("Connection has been established !");
+      })
