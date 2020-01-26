@@ -1,0 +1,74 @@
+1. npm init
+2.npm i express
+3.npm install express-handlebars
+
+4. folder structure
+  
+  mainFolder
+    -index.js
+    -views(folder)
+      -home.handlebars
+      -about.handlebars
+      -layouts(folder)
+          -main.handlebars
+          
+   ****************************************************
+        index.js
+  ****************************** **********************
+          const express=require("express");
+          const exphbs  = require('express-handlebars');
+          const app=express();
+
+          app.engine('handlebars', exphbs());
+          app.set('view engine', 'handlebars');
+          app.get("/",(req,res)=>{
+              res.render('home',{
+                  title:"Home",
+                  heading:"Welcome to home page"
+              });
+          });
+
+
+          app.get("/about",(req,res)=>{
+              res.render('about',{
+                  title:"About us",
+                  heading:"About Us"
+              });
+          });
+          app.listen(3000,()=>{
+              console.log("Connection has been established !");
+          })
+          
+          
+*****************************************
+main.handlebars
+*****************************************
+      <!DOCTYPE html>
+      <html>
+          <head>
+              <title>{{title}}</title>
+              <meta charset="utf-8">
+          </head>
+          <body>
+              <h1>{{heading}}</h1>
+              {{{body}}}
+          </body>
+      </html>
+      
+      
+**********************************************
+about.handlebars
+**********************************************
+<h3>Hello friends</h3>
+<p>This is new start up company </p>
+
+
+
+
+**********************************************
+home.handlebars
+**********************************************
+<h1>Hi welcome to Home page</h1>
+
+        
+ 
